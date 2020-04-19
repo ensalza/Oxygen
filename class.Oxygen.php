@@ -8,15 +8,15 @@
 
 		private $o;
 
-		public function __construct($o=NULL){
+		public function __construct($o=NULL,$file=false){
 
+			$this->o = new stdClass();
 			if (!is_null($o)){
 				if (is_string($o)){ // asumimos string con un json codificado
-					$o = json_decode($o);
+					$this->addJSON($i,$file);
+				}else {
+					$this->addO($o);
 				}
-				$this->o = $o;
-			}else{
-				$this->o = new stdClass();
 			}
 		}
 
@@ -32,13 +32,30 @@
 		}
 
 
+		public function addXML($xml,$file=false){
+			if ($file){
+				$xml = file_get_contents($xml);
+			}
+
+			/*
+			TODO DECODING XML AND CONVERT INTO AN OBJECT IN $O
+
+
+			*/
+			$this->addO($o);
+
+			return $this;
+		}
+
 		public function addJSON($json,$file=false){
 			if ($file){
 				$json = file_get_contents($json);
 			}
 
 			$o = json_decode($json);
-			$this->addO();
+			$this->addO($o);
+
+			return $this;
 		}
 
 		public function addO($o){
