@@ -44,17 +44,77 @@ var_dump($ret);
 
 */
 
-$o = new stdClass();
+$o = Oxygen();
 
-$o->aaaaaaaa = 1;
-$o->ccccc = 3;
-$o->dddd = array("v1"=>1,"v2"=>2);
+
+$o->aaaaaaaa = 2;
+
+$o->bbbbbbbb = 3;
+//$o->cccccccc = array("v1"=>1,"v2"=>2);
+$o->dddddddd->d1 ="1";
+$o->dddddddd->d2 ="2";
+$o->dddddddd->d3->a ="3";
+$o->dddddddd->d3->b->x->w ="4";
+$o->eeeeeeee = array(1,2,3);
+
+
+
+$o->addXML("<xml>
+ 
+ <bbbbbbbb>3</bbbbbbbb>
+ <wwwwwwww>4</wwwwwwww>
+ <cccccccc>
+  <v1>1</v1>
+  <v2>2</v2>
+  <v3>3</v3>
+ </cccccccc>
+ <dddddddd>
+  <d1>1</d1>
+  <d2>2</d2>
+  <d3>
+   <a>3</a>
+   <b>
+    <x>
+     <w>8</w>
+     <x>5</x>
+    </x>
+   </b>
+  </d3>
+ </dddddddd>
+ <eeeeeeee>1</eeeeeeee>
+ <eeeeeeee>4</eeeeeeee>
+</xml>");
+
+
+/*
+
+<dddddddd>
+  <d1>1</d1>
+  <d2>2</d2>
+  <d3>
+   <a>3</a>
+   <b>
+    <x>
+     <w>4</w>
+    </x>
+   </b>
+  </d3>
+ </dddddddd>
+ <eeeeeeee>
+  <x>1</x>
+  <x>2</x>
+ </eeeeeeee>
+
+*/
 
 //$json = json_encode($o);
 
-$o2 = Oxygen($o);
+//echo $o->getXML("xml");
 
-echo $o2->getJSON();
+//echo $o->getJSON(true,false);
+
+//$o->writeXML("xml");
+$o->writeJSON(true,false);
 
 
 
