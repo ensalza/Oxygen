@@ -7,22 +7,25 @@ You can read structures or URLs from formats: XML, stdClass and JSON strings.
 ```$o = new Oxygen();```
 
 
-##XML
-```$xml = "<xml><node>Content</node></xml>";
+## XML
+```
+$xml = "<xml><node>Content</node></xml>";
 $o->addXML($xml, false);
 
 $xml = "http://your-favorite-url.xml";
-$o->addXML($xml,true);```
+$o->addXML($xml,true);
+```
 
 
-##stdClass
+## stdClass
 ```
 $object = new stdClass();
 $object->node = "Content";
 
 $o->addO($object);
 ```
-##JSON
+
+## JSON
 ```$json = '{"node":"Content"}';
 $o->addJSON($xml,false);
 
@@ -32,13 +35,16 @@ $o->addJSON($xml,true);
 
 
 It can return objets in XML, stdClass and JSON formats.
-```$o->getO();
+```
+$o->getO();
 $o->getXML();
-$o->getJSON();```
+$o->getJSON();
+```
 
 
 It can merge objects from this formats and build a bigger object with de sum of all objects.
-```$object1 = new stdClass();
+```
+$object1 = new stdClass();
 $object1->node1 = "Content";
 
 $object2 = new stdClass();
