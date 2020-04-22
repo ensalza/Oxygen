@@ -70,4 +70,11 @@ $o->node2->suboject1->subobject2->subobject33 = "Much more content";
 ```
 
 
-
+Finally you can return JSON or XML to output directly without writing any header or echo. Oxygen do it for you.
+```
+$o->writeJSON(true);
+```
+or
+```
+$o->writeXML("xml");
+```
