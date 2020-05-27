@@ -113,8 +113,10 @@ $o->addXML("<xml>
 
 //echo $o->getJSON(true,false);
 
-//$o->writeXML("xml");
-$o->writeJSON(true,false);
+ $o->__CDATA__html ="<p>3</p>";
+
+$o->writeXML("xml");
+//$o->writeJSON(true,false);
 
 
 

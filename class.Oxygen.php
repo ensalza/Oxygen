@@ -6,7 +6,7 @@
 
 	class Oxygen implements Iterator{
 
-		private $o;
+		protected $o;
 		private $auxKey = "k";
 
 		public function __construct($o=NULL,$file=false){
@@ -103,7 +103,6 @@
 			foreach($o as $k=>$v){
 				if (isset($this->o->$k)){ // si existe y además es array, añadimos las posiciones
 					if (is_array($this->o->$k)){
-						var_dump($o->$k);
 						$this->o->$k = array_merge($this->o->$k,$o->$k);
 					}elseif (is_object($this->o->$k)){
 						$this->o->$k = (new Oxygen($this->o->$k))->addO($o->$k)->getO();
@@ -214,19 +213,37 @@
 					}else{
 						// metemos el elemento actual tantas veces como posiciones tenga el array
 						foreach ($value as $key2=>$value2){
-							if (is_object($value2)|| is_array($value2)){
+							if (is_object($value2) || is_array($value2)){
+
 								$xml->startElement($key);
 								$this->o2XML($xml, $value2);
 								$xml->endElement();						
 							}else{
-								$xml->writeElement($key, $value2);	
+								self::writeElement($xml, $key, $value2);	
 							}	
 						}
 					}
 				} else {
-					$xml->writeElement($key, $value);
+					self::writeElement($xml, $key, $value);
 				}
 			}
+		}
+
+
+		private static function writeElement($xml, $key, $value){
+
+			if (substr($key,0,9)=="__CDATA__"){
+				$key = str_replace("__CDATA__","",$key);
+
+				$xml->startElement($key);
+				$xml->writeCData($value);
+				$xml->endElement();						
+		
+			}else {
+				$xml->writeElement($key, $value);
+			}
+
+			return $xml;					
 		}
 	}
 

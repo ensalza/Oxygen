@@ -13,7 +13,7 @@ $o->addXML($xml, false);
 
 
 $xml = "http://your-favorite-url.xml";
-$o->addXML($xml,true);
+$o->addXML($xml, true);
 
 
 #stdClass
@@ -24,18 +24,19 @@ $o->addO($object);
 
 
 #JSON
-
 $json = '{"node":"Content"}';
-$o->addJSON($xml,false);
+$o->addJSON($xml, false);
 
 $json = "http://your-favorite-url.json";
-$o->addJSON($xml,true);
+$o->addJSON($xml, true);
 
 
 It can return objets in XML, stdClass and JSON formats.
 
 $o->getO();
+
 $o->getXML();
+
 $o->getJSON();
 
 
@@ -51,7 +52,7 @@ $o->getO();
 
 Will return only one object with both properties inside, node1 and node2.
 
-You can buid objects calling its properties directly without any implicit declaration. Oxygen assumes when a property is called and it is not previously set, it is a new Oxygen object with all its features available, so that you can write objects this way: 
+You can build objects calling its properties directly without any implicit declaration. Oxygen assumes when a property is called and it is not previously set, it is a new Oxygen object with all its features available, including implicit declaratio, so that you can write objects as deep as you need this way: 
 
 $o->node1 = "Content";
 $o->node2->suboject = "More content";
@@ -62,5 +63,11 @@ $o->node2->suboject1->subobject2->subobject31 = "Much more content";
 $o->node2->suboject1->subobject2->subobject32 = "Much more content";
 $o->node2->suboject1->subobject2->subobject33 = "Much more content";
 
+Also CDATA for XML export is supported.
+
+If youy define __CDATA__ special property, Oxygen interprets that in XML export you want CDATA special tag with HTML inside.
+
+$o->node2->__CDATA__textHTML = "<p>Rock & Roll !!</p>";
+$o->node2->__CDATA__otherHTML = "<p>More Rock & Roll !!</p>";
 
 
