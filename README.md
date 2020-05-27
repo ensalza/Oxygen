@@ -4,10 +4,12 @@ A class to manage objects, properties and JSON files in an easy way
 This class make easy to convert simple recursive into other formats.
 You can read structures or URLs from formats: XML, stdClass and JSON strings. 
 
+```
 $o = new Oxygen();
+```
 
 
-##XML
+## XML
 ```
 $xml = "<xml><node>Content</node></xml>";
 $o->addXML($xml, false);
@@ -17,7 +19,7 @@ $xml = "http://your-favorite-url.xml";
 $o->addXML($xml, true);
 ```
 
-##stdClass
+## stdClass
 ```
 $object = new stdClass();
 $object->node = "Content";
@@ -26,7 +28,7 @@ $o->addO($object);
 ```
 
 
-##JSON
+## JSON
 ```
 $json = '{"node":"Content"}';
 $o->addJSON($xml, false);
