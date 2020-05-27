@@ -37,17 +37,7 @@ $json = "http://your-favorite-url.json";
 $o->addJSON($xml, true);
 ```
 
-
-It can return objets in XML, stdClass and JSON formats.
-
-```
-$o->getO();
-
-$o->getXML();
-
-$o->getJSON();
-```
-
+## Building contents
 
 It can merge objects from this formats and build a bigger object with de sum of all objects.
 ```
@@ -88,7 +78,19 @@ $o->node2->__CDATA__textHTML = "<p>Rock & Roll !!</p>";
 $o->node2->__CDATA__otherHTML = "<p>More Rock & Roll !!</p>";
 ```
 
-Finally you can return JSON or XML to output directly without writing any header or echo. Oxygen do it for you.
+## Getting our final product
+
+It can return objets in XML, stdClass and JSON formats.
+
+```
+$o->getO();
+
+$o->getXML();
+
+$o->getJSON();
+```
+
+You can return JSON or XML to output directly without writing any header or echo to browser. Oxygen does it for you.
 ```
 $o->writeJSON(true);
 ```
